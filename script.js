@@ -142,6 +142,7 @@ class Deck {
             let k = Math.floor(Math.random() * (n + 1));
             [this.cards[k], this.cards[n]] = [this.cards[n], this.cards[k]];
         }
+        //console.log("Deck shuffled!");
     }
 
     drawCard(){
@@ -326,6 +327,8 @@ function startBetting() {
     selectedBetIndex = 0;
     currentBet = betAmounts[selectedBetIndex];
 
+    gameDeck = new Deck(2);
+    gameDeck.shuffle();
 }
 
 function placeBet(betAmount) {
@@ -334,11 +337,11 @@ function placeBet(betAmount) {
         playerBalance -= betAmount;
         if (gameDeck.getRemainingCards() < 52) {
             gameDeck = new Deck(2);
-            gameDeck.shuffle();
-            console.log("Deck reshuffled!");
         }
         gamePlayer = new Player();
         gameDealer = new Dealer();
+
+        gameDeck.shuffle();
         
         gamePlayer.takeCard(gameDeck.drawCard());
         gameDealer.takeCard(gameDeck.drawCard());
