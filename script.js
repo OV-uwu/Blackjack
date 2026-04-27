@@ -326,9 +326,6 @@ function startBetting() {
     gamePhase = "betting";
     selectedBetIndex = 0;
     currentBet = betAmounts[selectedBetIndex];
-
-    gameDeck = new Deck(2);
-    gameDeck.shuffle();
 }
 
 function placeBet(betAmount) {
@@ -337,6 +334,7 @@ function placeBet(betAmount) {
         playerBalance -= betAmount;
         if (gameDeck.getRemainingCards() < 52) {
             gameDeck = new Deck(2);
+            gameDeck.shuffle();
         }
         gamePlayer = new Player();
         gameDealer = new Dealer();
