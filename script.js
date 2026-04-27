@@ -1,7 +1,7 @@
 const canva = document.getElementById("canvas");
 const ctx = canva.getContext("2d");
 
-// ===== DRAWING FUNCTIONS =====
+//Drawing functions
 function drawRoundRect(ctx, x, y, width, height, radius, mainColor, borderColor) {
     ctx.beginPath();
     ctx.roundRect(x, y, width, height, radius);
@@ -64,7 +64,7 @@ function drawCardBack(x, y, rotation = 0) {
     ctx.restore();
 }
 
-// CLASSES 
+//Classes 
 
 class CardRing {
     constructor(centerX, centerY, distance, cardCount, speed) {
@@ -302,7 +302,7 @@ class Dealer extends Player {
     }
 }
 
-// MAIN GAME 
+// Main game 
 
 let gameState = "menu";
 
@@ -638,6 +638,8 @@ canva.addEventListener('mousemove', (event) => {
     canva.style.cursor = hovering ? "pointer" : "default";
 });
 
+
+// Main loop
 function mainLoop() {
     ctx.clearRect(0, 0, canva.width, canva.height);
     drawCheckboard(1000, 600, "#005500", "#006000", 25);
