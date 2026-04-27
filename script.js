@@ -1,6 +1,5 @@
 const canva = document.getElementById("canvas");
 const ctx = canva.getContext("2d");
-
 //Drawing functions
 function drawRoundRect(ctx, x, y, width, height, radius, mainColor, borderColor) {
     ctx.beginPath();
