@@ -306,7 +306,7 @@ class Dealer extends Player {
 
 let gameState = "menu";
 
-const innerinnerRing = new CardRing(500, 300, 210, 6, -0.0075);
+const innerinnerRing = new CardRing(500, 300, 210, 8, -0.0075);
 const outerRing = new CardRing(500, 300, 420, 16, 0.0035);
 
 let gamePlayer = null;
