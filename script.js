@@ -293,7 +293,7 @@ class Dealer extends Player {
     basicStrategy(){
         let handValue = this.getHandValue();
         if (handValue <= 16) {return true;}
-        if (handValue === 17 && this.isSoftHand()) {return true;}
+        if (handValue === 17 /*&& this.isSoftHand()*/) {return true;}
         return false;
     }
 
