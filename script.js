@@ -21,9 +21,7 @@ function drawCheckboard(width, height, firstColor, secondColor, tileSize) {
     }
 }
 
-function drawCard(x, y, id, rotation = 0) {
-    const width = 100;
-    const height = 140;
+function drawCard(x, y, id, rotation = 0, width = 100, height = 140) {
     let suit = ["♥", "♦", "♠", "♣"][Math.floor(id / 13)];
     let color = Math.floor(id / 13) < 2 ? "red" : "black";
     let value = (id % 13) + 1;
@@ -64,7 +62,6 @@ function drawCardBack(x, y, rotation = 0) {
 }
 
 //Classes 
-
 class CardRing {
     constructor(centerX, centerY, distance, cardCount, speed) {
         this.centerX = centerX;
