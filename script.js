@@ -443,7 +443,7 @@ function displayGameState() {
 
     // Draw player hand
     gamePlayer.hand.forEach((card, index) => {
-        drawCard(250 + index * 120, 500, card.id, 0);
+        drawCard(250 + index * 65, 500, card.id, 0);
     });
 
     // Draw dealer hand
@@ -451,7 +451,7 @@ function displayGameState() {
         if (gamePhase !== "showdown" && index === 1) {
             drawCardBack(250 + index * 120, 100, 0);
         } else {
-            drawCard(250 + index * 120, 100, card.id, 0);
+            drawCard(250 + index * 65, 100, card.id, 0);
         }
     });
 
@@ -459,7 +459,7 @@ function displayGameState() {
     ctx.fillStyle = "white";
     ctx.font = "24px Arial";
     ctx.textAlign = "left";
-    ctx.fillText("Player: " + gamePlayer.getHandValue(), 50, 560);
+    ctx.fillText("Player: " + gamePlayer.getHandValue(), 150, 410);
     ctx.fillText("Dealer: " + (gamePhase === "showdown" ? gameDealer.getHandValue() : "?"), 50, 80);
 
     // Instructions
