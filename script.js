@@ -335,7 +335,7 @@ let dealerHasPlayed = false;
 
 // Money system
 let playerBalance;
-if (localStorage.getItem("storedPlayerBalance") != null) {
+if ((localStorage.getItem("storedPlayerBalance") != null) && (localStorage.getItem("cookieConsent") == "accepted")) {
     playerBalance = localStorage.getItem("storedPlayerBalance")
 }
 else {
@@ -385,7 +385,9 @@ function updateBalance(result) {
         payout = currentBet; // Return original bet
     }
     playerBalance += payout;
-    localStorage.setItem("storedPlayerBalance", playerBalance);
+    if (localStorage.getItem("cookieConsent") == "accepted") { 
+        localStorage.setItem("storedPlayerBalance", playerBalance);
+    }
 }
 
 function dealerPlay() {
