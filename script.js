@@ -1,3 +1,23 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookie-banner");
+    const button = document.getElementById("accept-cookies");
+
+    const consent = localStorage.getItem("cookieConsent");
+
+    // Show banner if no consent yet
+    if (!consent) {
+        banner.style.display = "block";
+    }
+
+    // When user accepts
+    button.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "accepted");
+        banner.style.display = "none";
+    });
+});
+
+
 const canva = document.getElementById("canvas");
 const ctx = canva.getContext("2d");
 //Drawing functions
