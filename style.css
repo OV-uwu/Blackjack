@@ -33,7 +33,7 @@ a:hover {
 
 body {
     margin: 0;
-    background-image: url("bilder/bakgrundoptimeradjpg.jpg");
+    background-image: url("bilder/bakgrund.jpg");
     background-size: cover;
     background-attachment: fixed; /* gör bakgrunden statisk */
     background-position: center;
