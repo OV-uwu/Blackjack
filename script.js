@@ -1,4 +1,5 @@
 
+//Code for cookie-banner
 document.addEventListener("DOMContentLoaded", () => {
     const banner = document.getElementById("cookie-banner");
     const button = document.getElementById("accept-cookies");
