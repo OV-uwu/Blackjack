@@ -335,6 +335,7 @@ let dealerHasPlayed = false;
 
 // Money system
 let playerBalance;
+//Load the stored balance if it has a stored value and if the user has accepted the usage of localStorage
 if ((localStorage.getItem("storedPlayerBalance") != null) && (localStorage.getItem("cookieConsent") == "accepted")) {
     playerBalance = localStorage.getItem("storedPlayerBalance")
 }
@@ -385,6 +386,7 @@ function updateBalance(result) {
         payout = currentBet; // Return original bet
     }
     playerBalance += payout;
+    //Update the stored balance value if user has accepted localStorage
     if (localStorage.getItem("cookieConsent") == "accepted") { 
         localStorage.setItem("storedPlayerBalance", playerBalance);
     }
