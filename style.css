@@ -169,6 +169,7 @@ footer p{
 }
 #cookie-banner p {
     color: white;
+    text-align: center;
 }
 
 th, td {
