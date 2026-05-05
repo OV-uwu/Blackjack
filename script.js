@@ -314,7 +314,13 @@ let gameResult = null;
 let dealerHasPlayed = false;
 
 // Money system
-let playerBalance = 1000;
+let playerBalance;
+if (localStorage.getItem("storedPlayerBalance") != null) {
+    playerBalance = localStorage.getItem("storedPlayerBalance")
+}
+else {
+    playerBalance = 1000;
+}
 let currentBet = 0;
 const betAmounts = [50, 100, 250, 500];
 let selectedBetIndex = 0;
@@ -359,6 +365,7 @@ function updateBalance(result) {
         payout = currentBet; // Return original bet
     }
     playerBalance += payout;
+    localStorage.setItem("storedPlayerBalance", playerBalance);
 }
 
 function dealerPlay() {
@@ -476,6 +483,7 @@ function displayGameState() {
             ctx.fillText("Game Over!", 500, 350);
             ctx.font = "20px Arial";
             ctx.fillText("Press M to return to menu", 500, 380);
+            playerBalance = 1000;
         } else {
             ctx.font = "24px Arial";
             ctx.fillText("Press N for New Game", 500, 350);
