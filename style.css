@@ -173,7 +173,7 @@ footer p{
 th, td {
     border-style: hidden;
     padding-right: 50px;
-
+    font-weight: normal;
 }
 
 canvas{
