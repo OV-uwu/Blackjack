@@ -31,7 +31,7 @@ function drawRoundRect(ctx, x, y, width, height, radius, mainColor, borderColor)
     ctx.lineWidth = 2;
     ctx.stroke();
 }
-
+//Draw background
 function drawCheckboard(width, height, firstColor, secondColor, tileSize) {
     tileSize = Math.max(tileSize, 10);
     for (let i = 0; i < width; i += tileSize) {
@@ -41,7 +41,7 @@ function drawCheckboard(width, height, firstColor, secondColor, tileSize) {
         }
     }
 }
-
+//Main card drawing function
 function drawCard(x, y, id, rotation = 0, width = 100, height = 140) {
     let suit = ["♥", "♦", "♠", "♣"][Math.floor(id / 13)];
     let color = Math.floor(id / 13) < 2 ? "red" : "black";
@@ -69,7 +69,7 @@ function drawCard(x, y, id, rotation = 0, width = 100, height = 140) {
     ctx.fillText(suit, -width / 2 + 18, -height / 2 + 45);
     ctx.restore();
 }
-
+//Supportfunction to draw a card
 function drawCardBack(x, y, rotation = 0) {
     ctx.save();
     ctx.translate(x, y);
@@ -83,6 +83,7 @@ function drawCardBack(x, y, rotation = 0) {
 }
 
 //Classes 
+//Makes the spinning cards in the menu
 class CardRing {
     constructor(centerX, centerY, distance, cardCount, speed) {
         this.centerX = centerX;
@@ -97,6 +98,7 @@ class CardRing {
             this.cardIds.push(Math.floor(Math.random() * 52));
         }
     }
+    //Spins the cards and draws them
     updateAndDraw() {
         this.angle += this.speed;
         for (let i = 0; i < this.cardCount; i++) {
@@ -110,23 +112,20 @@ class CardRing {
         }
     }
 }
-
+//Main use for the card function
 class Card {
     constructor(id) {
             this.id = id;
     }
-
     getValue(){
         const rank = this.id % 13 + 1;
         if (rank === 1) return 11;
         if (rank > 10) return 10;
         return rank;
     }
-
     getCardID(){return this.id};
-    
 }
-
+//Makes a deck of the card class and has useful functions for the game
 class Deck {
     constructor(numberOfDecks = 1) {
         this.isEmpty = false; //Kanske ta bort men senare
@@ -187,7 +186,7 @@ class Deck {
     }
 
 }
-
+//Player is a player
 class Player {
     constructor(numberOfDecks = 1) {
         this.hand = []; //Array med kortobjekt som spelaren har på handen
@@ -197,7 +196,7 @@ class Player {
     getResults(){
         return this.resulst;
     }
-
+    //Functions to add results to the result array, used for statistics and card counting
     addWin(){this.resulst.push("w")}
     addLoss(){this.resulst.push("l")}
     addPush(){this.resulst.push("p")}
@@ -321,7 +320,6 @@ class Dealer extends Player {
 }
 
 // Main game 
-
 let gameState = "menu";
 
 const innerinnerRing = new CardRing(500, 300, 210, 8, -0.0075);
