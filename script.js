@@ -2,7 +2,8 @@
 //Code for cookie-banner
 document.addEventListener("DOMContentLoaded", () => {
     const banner = document.getElementById("cookie-banner");
-    const button = document.getElementById("accept-cookies");
+    const acceptButton = document.getElementById("accept-cookies");
+    const declineButton = document.getElementById("decline-cookies");
 
     const consent = localStorage.getItem("cookieConsent");
 
@@ -12,15 +13,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // When user accepts
-    button.addEventListener("click", () => {
+    acceptButton.addEventListener("click", () => {
         localStorage.setItem("cookieConsent", "accepted");
+        banner.style.display = "none";
+    });
+
+    // When user declines
+    declineButton.addEventListener("click", () => {
+        localStorage.setItem("cookieConsent", "declined");
         banner.style.display = "none";
     });
 });
 
 
 const canva = document.getElementById("canvas");
-const ctx = canva.getContext("2d");
+
+let ctx = null;
+
+if (canva) {
+    ctx = canva.getContext("2d");
+}
 //Drawing functions
 function drawRoundRect(ctx, x, y, width, height, radius, mainColor, borderColor) {
     ctx.beginPath();
@@ -419,7 +431,12 @@ function determineWinner() {
         else gameResult = "Push!";
     }
     updateBalance(gameResult);
-    gamePhase = "showdown";
+    window.dispatchEvent(new CustomEvent("blackjackResult", 
+    {
+    detail: gameResult
+    }));
+
+gamePhase = "showdown";
 }
 
 function drawMenu() {
@@ -691,4 +708,6 @@ function mainLoop() {
     requestAnimationFrame(mainLoop);
 }
 
-mainLoop();
+if (canva) {
+    mainLoop();
+}

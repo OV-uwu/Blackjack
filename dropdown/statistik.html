@@ -6,6 +6,8 @@
     <title>BJA | Statistik</title>
 	<link href="../style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="cookie-banner">
@@ -36,7 +38,11 @@
        
         <div class="main">
             <h1>Statistik</h1>
-            <p>Här ska det finnas vacker statistik om blackjack.</p>
+            <p>Statistik för vinstchanser i Blackjack baserat på dina spelresultat. 
+                Om du inte accepterat cookies eller testat websidans spelfunktion 
+                finns ingen statistik.</p>
+
+            <canvas id="statsChart" width="1000" height="600"></canvas>
        </div>
     </div>
 
@@ -48,5 +54,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../statsscript.js"></script>
 </body>
 </html>
